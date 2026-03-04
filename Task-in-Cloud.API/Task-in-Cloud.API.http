@@ -1,0 +1,6 @@
+@Task_in_Cloud.API_HostAddress = http://localhost:5080
+
+GET {{Task_in_Cloud.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
