@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Task-in-Cloud.Application\Task-in-Cloud.Application.csproj" />
+    <ProjectReference Include="..\Task-in-Cloud.Infrastructure\Task-in-Cloud.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
