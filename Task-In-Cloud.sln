@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36908.2 d17.14
+VisualStudioVersion = 17.14.36908.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task-In-Cloud.Domain", "Task-In-Cloud.Domain\Task-In-Cloud.Domain.csproj", "{D3CB3551-7D14-4591-852F-5E096F84B155}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task-in-Cloud.Infrastructure", "Task-in-Cloud.Infrastructure\Task-in-Cloud.Infrastructure.csproj", "{C3717E1D-E0A3-4440-BE83-2DE4CBA79CF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task-in-Cloud.API", "Task-in-Cloud.API\Task-in-Cloud.API.csproj", "{A33B3DA0-AF13-4465-8022-A3FB1291F1FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task-In Cloud.Shared", "Task-In Cloud.Shared\Task-In Cloud.Shared.csproj", "{D1E16F36-84C1-4A27-B6F5-AD47EA15CC84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A33B3DA0-AF13-4465-8022-A3FB1291F1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A33B3DA0-AF13-4465-8022-A3FB1291F1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A33B3DA0-AF13-4465-8022-A3FB1291F1FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E16F36-84C1-4A27-B6F5-AD47EA15CC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E16F36-84C1-4A27-B6F5-AD47EA15CC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E16F36-84C1-4A27-B6F5-AD47EA15CC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E16F36-84C1-4A27-B6F5-AD47EA15CC84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
