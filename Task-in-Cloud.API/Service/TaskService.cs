@@ -1,13 +1,12 @@
-﻿using Task_in_Cloud.API.Model.Interface;
-using Task = Task_in_Cloud.Infrastructure.Model.Entity.Task;
+﻿using Task_in_Cloud.Infrastructure.Model.Entity;
+using Task_in_Cloud.Infrastructure.Repository;
 
 namespace Task_in_Cloud.API.Service
 {
-    public class TaskService: ServiceBase<Task>
+    public class TaskService: ServiceBase<TaskModel>
     {
-        public TaskService(IRepository<Task> Repository) : base(Repository)
+        public TaskService(TaskRepository Repository) : base(Repository)
         {
-            _repository = Repository;
         }
     }
 }

@@ -5,7 +5,7 @@ using Task_in_Cloud.Infrastructure.Model.Enums;
 namespace Task_in_Cloud.Infrastructure.Model.Entity
 {
     [Table("task")]
-    public class Task: BaseModel
+    public class TaskModel: BaseModel
     {
         [PrimaryKey("idtask")]
         public int IdTask { get; set; }
