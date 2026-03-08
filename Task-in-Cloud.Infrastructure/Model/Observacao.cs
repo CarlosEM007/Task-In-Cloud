@@ -1,7 +1,7 @@
 ﻿using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 
-namespace Task_in_Cloud.Infrastructure.Model.Entity
+namespace Task_in_Cloud.Infrastructure.Model
 {
     [Table("observacao")]
     public class Observacao: BaseModel

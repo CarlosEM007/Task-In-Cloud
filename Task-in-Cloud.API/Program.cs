@@ -1,3 +1,7 @@
+using Supabase;
+using Task_in_Cloud.Domain.Service;
+using Task_in_Cloud.Infrastructure.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,9 +11,30 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region Conexão ao Banco
+var url = Environment.GetEnvironmentVariable("TASKIN_SUPABASE_URL");
+var key = Environment.GetEnvironmentVariable("TASKIN_SUPABASE_KEY");
+
+var options = new Supabase.SupabaseOptions
+{
+    AutoConnectRealtime = true
+};
+
+var supabase = new Supabase.Client(url, key, options);
+await supabase.InitializeAsync();
+
+builder.Services.AddSingleton<Client>(supabase);
+#endregion
+
+#region Scoped
+
+builder.Services.AddScoped<TaskRepository>();
+builder.Services.AddScoped<TaskService>();
+
+#endregion
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

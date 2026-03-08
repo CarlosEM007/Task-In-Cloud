@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Supabase.Postgrest.Models;
-using Task_in_Cloud.API.Service;
+using Task_in_Cloud.Domain.Service;
 using Task_In_Cloud.Shared.Utils;
 
 namespace Task_in_Cloud.API.Controllers
 {
-    [ApiController]
     public abstract class BaseController<TEntity, TDTO>: ControllerBase
         where TEntity : BaseModel, new()
         where TDTO : class, new()

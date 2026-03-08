@@ -1,16 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Task_in_Cloud.Domain.Service;
+using Task_in_Cloud.Infrastructure.Model;
 using Task_In_Cloud.Shared.Model.DTO;
-using Task = Task_in_Cloud.Infrastructure.Model.Entity.Task;
 
 namespace Task_in_Cloud.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TaskController: BaseController<Task, TaskDTO>
+    public class WorkspaceController : BaseController<Workspace, WorkspaceDTO> 
     {
-        public TaskController(TaskService service): base(service)
-        {
-        }
+        public WorkspaceController(WorkspaceService service) : base(service) { }
     }
 }

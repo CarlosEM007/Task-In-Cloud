@@ -3,7 +3,7 @@ using Task_in_Cloud.API.Model.Interface;
 using Task_in_Cloud.Infrastructure.Model.Interface;
 using Task_In_Cloud.Shared.Utils;
 
-namespace Task_in_Cloud.API.Service
+namespace Task_in_Cloud.Domain.Service
 {
     public class ServiceBase<T> : IService<T> where T : BaseModel, new()
     {

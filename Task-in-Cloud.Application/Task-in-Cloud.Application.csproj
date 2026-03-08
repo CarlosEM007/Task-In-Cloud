@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Task-In-Cloud.Domain\Task-In-Cloud.Domain.csproj" />
+    <ProjectReference Include="..\Task-in-Cloud.Infrastructure\Task-in-Cloud.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

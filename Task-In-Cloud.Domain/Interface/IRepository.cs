@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task_in_Cloud.Infrastructure.Model.Interface
+namespace Task_in_Cloud.Domain.Interface
 {
     public interface IRepository<T> where T : class
     {

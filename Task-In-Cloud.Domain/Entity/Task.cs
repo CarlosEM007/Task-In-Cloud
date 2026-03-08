@@ -2,10 +2,10 @@
 using Supabase.Postgrest.Models;
 using Task_in_Cloud.Infrastructure.Model.Enums;
 
-namespace Task_in_Cloud.Infrastructure.Model.Entity
+namespace Task_in_Cloud.Domain.Model.Entity
 {
     [Table("task")]
-    public class TaskModel: BaseModel
+    public class Task: BaseModel
     {
         [PrimaryKey("idtask")]
         public int IdTask { get; set; }
