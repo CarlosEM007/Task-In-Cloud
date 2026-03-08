@@ -11,7 +11,7 @@ namespace Task_in_Cloud.Infrastructure.Model.Entity
         public int IdTask { get; set; }
 
         [Column("titulo")]
-        public required string Titulo { get; set; }
+        public string Titulo { get; set; }
 
         [Column("descricao")]
         public string? Descricao { get; set; }

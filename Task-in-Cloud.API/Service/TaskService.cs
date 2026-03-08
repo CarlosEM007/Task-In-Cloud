@@ -5,8 +5,6 @@ namespace Task_in_Cloud.API.Service
 {
     public class TaskService: ServiceBase<Task>
     {
-        protected IRepository<Task> _repository;
-
         public TaskService(IRepository<Task> Repository) : base(Repository)
         {
             _repository = Repository;

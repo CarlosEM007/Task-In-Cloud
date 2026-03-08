@@ -10,6 +10,6 @@ namespace Task_in_Cloud.Infrastructure.Model.Entity
         public int IdWorkspace { get; set; }
 
         [Column("Titulo")]
-        public required string Nome { get; set; }
+        public string Nome { get; set; }
     }
 }
