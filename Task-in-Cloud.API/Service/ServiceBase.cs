@@ -23,6 +23,11 @@ namespace Task_in_Cloud.API.Service
             return await _repository.Get(id);
         }
 
+        public virtual async Task<List<T>> GetAll()
+        {
+            return await _repository.GetAll();
+        }
+
         public virtual async Task<bool> Post(string JsonModel)
         {
             T? Entity = Json<T>.Deserializar(JsonModel);

@@ -23,6 +23,14 @@ namespace Task_in_Cloud.Infrastructure.Repository
             return model.Models.FirstOrDefault();
         }
 
+        public virtual async Task<List<T>> GetAll()
+        {
+            ModeledResponse<T> model = await _client.From<T>()
+                                           .Get();
+
+            return model.Models;
+        }
+
         public virtual async Task<bool> Post(T Entity)
         {
             await _client.From<T>().Insert(Entity);
