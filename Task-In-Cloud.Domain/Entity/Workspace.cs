@@ -1,18 +1,29 @@
-﻿using Supabase.Postgrest.Attributes;
-using Supabase.Postgrest.Models;
+﻿using System.Threading.Tasks;
 
 namespace Task_in_Cloud.Domain.Model.Entity
 {
-    [Table("workspace")]
-    public class Workspace : BaseModel
+    public class Workspace
     {
-        [PrimaryKey("idworkspace")]
         public int IdWorkspace { get; set; }
 
-        [Column("titulo")]
         public string Nome { get; set; }
 
-        [Column("descricao")]
         public string? Descricao { get; set; }
+
+        public Workspace() { }
+
+        public Workspace(int idWorkspace, string nome, string? descricao)
+        {
+            if (string.IsNullOrEmpty(nome))
+            {
+                throw new Exception("Nome da Workspace não pode ser Nulo!");
+            }
+
+            IdWorkspace = idWorkspace;
+            Nome = nome;
+            Descricao = descricao;
+        }
+
+
     }
 }

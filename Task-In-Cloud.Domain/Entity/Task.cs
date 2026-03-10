@@ -1,25 +1,34 @@
-﻿using Supabase.Postgrest.Attributes;
-using Supabase.Postgrest.Models;
-using Task_in_Cloud.Infrastructure.Model.Enums;
+﻿using Task_in_Cloud.Domain.Model.Enums;
 
 namespace Task_in_Cloud.Domain.Model.Entity
 {
-    [Table("task")]
-    public class Task: BaseModel
+    public class Task
     {
-        [PrimaryKey("idtask")]
         public int IdTask { get; set; }
 
-        [Column("titulo")]
         public string Titulo { get; set; }
 
-        [Column("descricao")]
         public string? Descricao { get; set; }
 
-        [Column("status")]
         public TaskStatusEnum Status { get; set; } = TaskStatusEnum.Nova;
 
-        [Column("idworkspace")]
         public int? IdWorkspace { get; set; }
+
+        public Task() { }
+
+        public Task(int idTask, string titulo, string? descricao, TaskStatusEnum status, int? idWorkspace)
+        {
+            if (string.IsNullOrEmpty(titulo))
+            {
+                throw new Exception("O título da Task deve ser preenchido!");
+            }
+
+            IdTask = idTask;
+            Titulo = titulo;
+            Descricao = descricao;
+            Status = status;
+            IdWorkspace = idWorkspace;
+        }
+
     }
 }

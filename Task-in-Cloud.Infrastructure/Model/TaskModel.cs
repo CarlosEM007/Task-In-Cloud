@@ -1,6 +1,6 @@
 ﻿using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
-using Task_in_Cloud.Infrastructure.Model.Enums;
+using Task_in_Cloud.Domain.Model.Enums;
 
 namespace Task_in_Cloud.Infrastructure.Model
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task_in_Cloud.Infrastructure.Model.Enums
+namespace Task_in_Cloud.Domain.Model.Enums
 {
     public enum TaskStatusEnum
     {

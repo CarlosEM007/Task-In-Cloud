@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Task_in_Cloud.Infrastructure.Model.Enums;
+﻿using Task_in_Cloud.Domain.Model.Enums;
 
 namespace Task_In_Cloud.Shared.Model.DTO
 {
@@ -17,7 +11,7 @@ namespace Task_In_Cloud.Shared.Model.DTO
         public string? Descricao { get; set; }
 
         public TaskStatusEnum Status { get; set; } = TaskStatusEnum.Nova;
-
+        
         public int? IdWorkspace { get; set; }
     }
 }

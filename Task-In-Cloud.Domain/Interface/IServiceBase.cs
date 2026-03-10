@@ -1,4 +1,4 @@
-﻿namespace Task_in_Cloud.API.Model.Interface
+﻿namespace Task_in_Cloud.Domain.Model.Interface
 {
     public interface IService<T> where T : class
     {

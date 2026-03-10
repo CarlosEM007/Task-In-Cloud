@@ -1,11 +1,12 @@
 ﻿using Supabase.Postgrest.Models;
-using Task_in_Cloud.API.Model.Interface;
-using Task_in_Cloud.Infrastructure.Model.Interface;
+using Task_in_Cloud.Domain.Model.Interface;
+using Task_in_Cloud.Domain.Interface;
 using Task_In_Cloud.Shared.Utils;
+using Task_in_Cloud.Infrastructure.Repository;
 
 namespace Task_in_Cloud.Domain.Service
 {
-    public class ServiceBase<T> : IService<T> where T : BaseModel, new()
+    public class ServiceBase<T> : IService<T> where T : class, new()
     {
         protected IRepository<T> _repository;
          

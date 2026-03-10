@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Task_in_Cloud.Domain.Service;
 using Task_In_Cloud.Shared.Model.DTO;
-using Task = Task_in_Cloud.Infrastructure.Model.Entity.Task;
+using Task = Task_in_Cloud.Domain.Model.Entity.Task;
 
 namespace Task_in_Cloud.API.Controllers
 {
