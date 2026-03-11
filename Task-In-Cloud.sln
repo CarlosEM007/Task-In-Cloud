@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task-in-Cloud.API", "Task-i
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task-in-Cloud.Application", "Task-in-Cloud.Application\Task-in-Cloud.Application.csproj", "{C62EB290-819A-E352-CD66-99604460F755}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task-In-Cloud.Shared", "Task-In-Cloud.Shared\Task-In-Cloud.Shared.csproj", "{B8B199E0-7852-4E5D-8A79-A3A7323604E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C62EB290-819A-E352-CD66-99604460F755}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C62EB290-819A-E352-CD66-99604460F755}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C62EB290-819A-E352-CD66-99604460F755}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B199E0-7852-4E5D-8A79-A3A7323604E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B199E0-7852-4E5D-8A79-A3A7323604E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B199E0-7852-4E5D-8A79-A3A7323604E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B199E0-7852-4E5D-8A79-A3A7323604E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

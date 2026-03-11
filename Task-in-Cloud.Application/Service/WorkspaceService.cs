@@ -1,4 +1,5 @@
-﻿using Task_in_Cloud.Infrastructure.Model;
+﻿using Task_in_Cloud.Domain.Model.Entity;
+using Task_in_Cloud.Infrastructure.Model;
 using Task_in_Cloud.Infrastructure.Repository;
 
 namespace Task_in_Cloud.Domain.Service

@@ -6,6 +6,8 @@
         public string Descricao { get; set; }
         public int IdTask { get; set; }
 
+        public Observacao() { }
+
         public Observacao(int idObservacao, string descricao, int idTask)
         {
             if (string.IsNullOrEmpty(descricao))

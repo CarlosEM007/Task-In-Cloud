@@ -4,7 +4,7 @@ using Supabase.Postgrest.Models;
 namespace Task_in_Cloud.Infrastructure.Model
 {
     [Table("workspace")]
-    public class Workspace: BaseModel
+    public class WorkspaceModel: BaseModel
     {
         [PrimaryKey("idworkspace")]
         public int IdWorkspace { get; set; }

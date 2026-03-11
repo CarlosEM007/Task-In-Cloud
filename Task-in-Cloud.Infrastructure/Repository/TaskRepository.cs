@@ -8,19 +8,24 @@ namespace Task_in_Cloud.Infrastructure.Repository
 {
     public class TaskRepository: IRepository<Task>
     {
+        protected readonly Client _client;
+
+        public TaskRepository() { }
+
         public TaskRepository(Client client)
         {
+            _client = client;
         }
-
-        protected readonly Client _client;
 
         public virtual async Task<Task> Get(int id)
         {
             ModeledResponse<TaskModel> model = await _client.From<TaskModel>()
-                                                    .Filter($"id{nameof(TaskModel)}", Supabase.Postgrest.Constants.Operator.Equals, id)
-                                                    .Get();
+                                                            .Filter($"idtask", Supabase.Postgrest.Constants.Operator.Equals, id)
+                                                            .Get();
 
-            return model.Models.FirstOrDefault();
+            
+
+            return Mapper.Mapper.MapperObject<Task>(model.Models.FirstOrDefault());
         }
 
         public virtual async Task<List<Task>> GetAll()
@@ -28,25 +33,29 @@ namespace Task_in_Cloud.Infrastructure.Repository
             ModeledResponse<TaskModel> model = await _client.From<TaskModel>()
                                                     .Get();
 
-            return model.Models;
+            return Mapper.Mapper.MapperListObjects<Task>(model.Models);
         }
 
         public virtual async Task<bool> Post(Task Entity)
         {
-            await _client.From<TaskModel>().Insert(Entity);
+            TaskModel Task = Mapper.Mapper.MapperObject<TaskModel>(Entity);
+
+            await _client.From<TaskModel>().Insert(Task);
             return true;
         }
 
-        public virtual async Task<bool> Put(TaskModel Entity)
+        public virtual async Task<bool> Put(Task Entity)
         {
-            await _client.From<TaskModel>().Update(Entity);
+            TaskModel Task = Mapper.Mapper.MapperObject<TaskModel>(Entity);
+
+            await _client.From<TaskModel>().Update(Task);
             return true;
         }
 
         public virtual async Task<bool> Delete(int id)
         {
             await _client.From<TaskModel>()
-                         .Filter($"Id{nameof(TaskModel)}", Supabase.Postgrest.Constants.Operator.Equals, id)
+                         .Filter($"idtask", Supabase.Postgrest.Constants.Operator.Equals, id)
                          .Delete();
 
             return true;

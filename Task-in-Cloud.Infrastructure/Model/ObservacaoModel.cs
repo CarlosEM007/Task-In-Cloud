@@ -4,13 +4,13 @@ using Supabase.Postgrest.Models;
 namespace Task_in_Cloud.Infrastructure.Model
 {
     [Table("observacao")]
-    public class Observacao: BaseModel
+    public class ObservacaoModel: BaseModel
     {
         [PrimaryKey("idobservacao")]
         public int IdObservacao { get; set; }
 
         [Column("observacao")]
-        public required string Descricao { get; set; }
+        public string Descricao { get; set; }
 
         [Column("idTask")]
         public int IdTask { get; set; }
