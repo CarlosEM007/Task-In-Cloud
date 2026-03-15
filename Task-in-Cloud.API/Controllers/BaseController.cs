@@ -5,8 +5,7 @@ using Task_In_Cloud.Shared.Utils;
 
 namespace Task_in_Cloud.API.Controllers
 {
-    public abstract class BaseController<TEntity, TDTO>: ControllerBase
-        where TEntity : BaseModel, new()
+    public abstract class BaseController<TDTO>: ControllerBase
         where TDTO : class, new()
     {
         protected readonly ServiceBase<TEntity> _service;

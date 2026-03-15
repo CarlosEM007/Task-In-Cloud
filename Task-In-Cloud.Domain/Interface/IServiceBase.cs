@@ -4,8 +4,8 @@
     {
         Task<T> Get(int id);
         Task<List<T>> GetAll();
-        Task<bool> Post(string JsonModel);
-        Task<bool> Put(string JsonModel);
+        Task<bool> Post(T Task);
+        Task<bool> Put(T Task);
         Task<bool> Delete(int id);
     }
 }
