@@ -1,12 +1,10 @@
-﻿using Task_in_Cloud.Domain.Interface;
-using Task_in_Cloud.Domain.Model.Entity;
-using Task_in_Cloud.Domain.Model.Interface;
+﻿using Task = Task_in_Cloud.Domain.Model.Entity.Task;
 using Task_in_Cloud.Infrastructure.Repository;
+using Task_in_Cloud.Domain.Model.Interface;
 using Task_In_Cloud.Shared.Model.DTO;
 using Task_In_Cloud.Shared.Utils;
-using Task = Task_in_Cloud.Domain.Model.Entity.Task;
 
-namespace Task_in_Cloud.Domain.Service
+namespace Task_in_Cloud.Application.Service
 {
     public class TaskService: IService<TaskDTO>
     {
@@ -68,7 +66,7 @@ namespace Task_in_Cloud.Domain.Service
                     Task.IdWorkspace
                 );
 
-                return await _repository.Post(Entity);
+                return await _repository.Put(Entity);
             }
             catch
             {

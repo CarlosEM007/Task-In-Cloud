@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Task_in_Cloud.Domain.Service;
+using Task_in_Cloud.Application.Service;
 using Task_In_Cloud.Shared.Model.DTO;
+using Task_In_Cloud.Shared.Utils;
 using Task = Task_in_Cloud.Domain.Model.Entity.Task;
 
 namespace Task_in_Cloud.API.Controllers
@@ -13,6 +14,7 @@ namespace Task_in_Cloud.API.Controllers
 
         public TaskController(TaskService service)
         {
+            _service = service;
         }
 
         [HttpGet("{id:int}")]
@@ -25,7 +27,7 @@ namespace Task_in_Cloud.API.Controllers
                 if (entity == null)
                     return NotFound("Identificador inválido!");
 
-                return Ok(Mapper.Map<TDTO>(entity));
+                return Ok(entity);
             }
             catch (Exception ex)
             {
@@ -38,12 +40,12 @@ namespace Task_in_Cloud.API.Controllers
         {
             try
             {
-                var entity = await _service.GetAll();
+                List<TaskDTO> entity = await _service.GetAll();
 
                 if (entity == null)
-                    return NotFound("Identificador inválido!");
+                    return NotFound("Nenhuma tarefa encontrada!");
 
-                return Ok(Mapper.Map<TDTO>(entity));
+                return Ok(entity);
             }
             catch (Exception ex)
             {
@@ -54,9 +56,16 @@ namespace Task_in_Cloud.API.Controllers
         [HttpPost("{jsonModel}")]
         public virtual async Task<IActionResult> Post(string jsonModel)
         {
+            var success = false;
+
             try
             {
-                var success = await _service.Post(jsonModel);
+                TaskDTO? Entity = Json<TaskDTO>.Deserializar(jsonModel);
+
+                if (Entity != null)
+                {
+                    success = await _service.Post(Entity);
+                }
 
                 if (success)
                     return Ok();
@@ -72,9 +81,16 @@ namespace Task_in_Cloud.API.Controllers
         [HttpPut("{jsonModel}")]
         public virtual async Task<IActionResult> Put(string jsonModel)
         {
+            var success = false;
+
             try
             {
-                var success = await _service.Put(jsonModel);
+                TaskDTO? Entity = Json<TaskDTO>.Deserializar(jsonModel);
+
+                if (Entity != null)
+                {
+                    success = await _service.Put(Entity);
+                }
 
                 if (success)
                     return Ok();

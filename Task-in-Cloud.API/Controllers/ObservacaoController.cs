@@ -1,18 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Supabase.Postgrest.Models;
-using Task_in_Cloud.Domain.Service;
-using Task_In_Cloud.Shared.Utils;
+using Task_in_Cloud.Application.Model.DTO;
+using Task_in_Cloud.Application.Service;
+using Task_In_Cloud.Shared;
+using Task_In_Cloud.Shared.Model.DTO;
 
 namespace Task_in_Cloud.API.Controllers
 {
-    public abstract class BaseController<TDTO>: ControllerBase
-        where TDTO : class, new()
+    [ApiController]
+    [Route("[controller]")]
+    public class ObservacaoController: ControllerBase
     {
-        protected readonly ServiceBase<TEntity> _service;
+        private readonly ObservacaoService _service;
 
-        protected BaseController(ServiceBase<TEntity> Service)
+        public ObservacaoController(ObservacaoService service)
         {
-            _service = Service;
+            _service = service;
         }
 
         [HttpGet("{id:int}")]
@@ -20,12 +22,12 @@ namespace Task_in_Cloud.API.Controllers
         {
             try
             {
-                var entity = await _service.Get(id);
+                ObservacaoDTO entity = await _service.Get(id);
 
                 if (entity == null)
                     return NotFound("Identificador inválido!");
 
-                return Ok(Mapper.Map<TDTO>(entity));
+                return Ok(entity);
             }
             catch (Exception ex)
             {
@@ -38,12 +40,12 @@ namespace Task_in_Cloud.API.Controllers
         {
             try
             {
-                var entity = await _service.GetAll();
+                List<ObservacaoDTO> entity = await _service.GetAll();
 
                 if (entity == null)
-                    return NotFound("Identificador inválido!");
+                    return NotFound("Nenhuma tarefa encontrada!");
 
-                return Ok(Mapper.Map<TDTO>(entity));
+                return Ok(entity);
             }
             catch (Exception ex)
             {
@@ -54,9 +56,16 @@ namespace Task_in_Cloud.API.Controllers
         [HttpPost("{jsonModel}")]
         public virtual async Task<IActionResult> Post(string jsonModel)
         {
+            var success = false;
+
             try
             {
-                var success = await _service.Post(jsonModel);
+                ObservacaoDTO? Entity = Json<ObservacaoDTO>.Deserializar(jsonModel);
+
+                if (Entity != null)
+                {
+                    success = await _service.Post(Entity);
+                }
 
                 if (success)
                     return Ok();
@@ -72,9 +81,16 @@ namespace Task_in_Cloud.API.Controllers
         [HttpPut("{jsonModel}")]
         public virtual async Task<IActionResult> Put(string jsonModel)
         {
+            var success = false;
+
             try
             {
-                var success = await _service.Put(jsonModel);
+                ObservacaoDTO? Entity = Json<ObservacaoDTO>.Deserializar(jsonModel);
+
+                if (Entity != null)
+                {
+                    success = await _service.Put(Entity);
+                }
 
                 if (success)
                     return Ok();

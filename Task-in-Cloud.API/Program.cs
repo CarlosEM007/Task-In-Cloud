@@ -1,4 +1,5 @@
 using Supabase;
+using Task_in_Cloud.Application.Service;
 using Task_in_Cloud.Domain.Service;
 using Task_in_Cloud.Infrastructure.Repository;
 
@@ -30,6 +31,12 @@ builder.Services.AddSingleton<Client>(supabase);
 
 builder.Services.AddScoped<TaskRepository>();
 builder.Services.AddScoped<TaskService>();
+
+builder.Services.AddScoped<WorkspaceRepository>();
+builder.Services.AddScoped<WorkspaceService>();
+
+builder.Services.AddScoped<ObservacaoRepository>();
+builder.Services.AddScoped<ObservacaoService>();
 
 #endregion
 
