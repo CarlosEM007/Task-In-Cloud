@@ -53,14 +53,14 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPost("{jsonModel}")]
-        public virtual async Task<IActionResult> Post(string jsonModel)
+        [HttpPost("{Model}")]
+        public virtual async Task<IActionResult> Post(string Model)
         {
             var success = false;
 
             try
             {
-                ObservacaoDTO? Entity = Json<ObservacaoDTO>.Deserializar(jsonModel);
+                ObservacaoDTO? Entity = Json<ObservacaoDTO>.Deserializar(Model);
 
                 if (Entity != null)
                 {

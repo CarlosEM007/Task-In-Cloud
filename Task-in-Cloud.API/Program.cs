@@ -16,12 +16,7 @@ builder.Services.AddSwaggerGen();
 var url = Environment.GetEnvironmentVariable("TASKIN_SUPABASE_URL");
 var key = Environment.GetEnvironmentVariable("TASKIN_SUPABASE_KEY");
 
-var options = new Supabase.SupabaseOptions
-{
-    AutoConnectRealtime = true
-};
-
-var supabase = new Supabase.Client(url, key, options);
+var supabase = new Supabase.Client(url, key);
 await supabase.InitializeAsync();
 
 builder.Services.AddSingleton<Client>(supabase);

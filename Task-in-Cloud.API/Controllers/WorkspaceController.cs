@@ -53,14 +53,14 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPost("{jsonModel}")]
-        public virtual async Task<IActionResult> Post(string jsonModel)
+        [HttpPost("{Model}")]
+        public virtual async Task<IActionResult> Post(string Model)
         {
             var success = false;
 
             try
             {
-                WorkspaceDTO? Entity = Json<WorkspaceDTO>.Deserializar(jsonModel);
+                WorkspaceDTO? Entity = Json<WorkspaceDTO>.Deserializar(Model);
 
                 if (Entity != null)
                 {
@@ -78,14 +78,14 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPut("{jsonModel}")]
-        public virtual async Task<IActionResult> Put(string jsonModel)
+        [HttpPut("{Model}")]
+        public virtual async Task<IActionResult> Put(string Model)
         {
             var success = false;
 
             try
             {
-                WorkspaceDTO? Entity = Json<WorkspaceDTO>.Deserializar(jsonModel);
+                WorkspaceDTO? Entity = Json<WorkspaceDTO>.Deserializar(Model);
 
                 if (Entity != null)
                 {
