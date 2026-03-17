@@ -55,9 +55,9 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPost("{Observacao}")]
+        [HttpPost]
         [SwaggerRequestExample(typeof(ObservacaoDTO), typeof(ObservacaoDtoExample))]
-        public virtual async Task<IActionResult> Post(ObservacaoDTO Observacao)
+        public virtual async Task<IActionResult> Post([FromBody] ObservacaoDTO Observacao)
         {
             var success = false;
 
@@ -79,9 +79,9 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPut("{Observacao}")]
+        [HttpPut]
         [SwaggerRequestExample(typeof(ObservacaoDTO), typeof(ObservacaoDtoExample))]
-        public virtual async Task<IActionResult> Put(ObservacaoDTO Observacao)
+        public virtual async Task<IActionResult> Put([FromBody] ObservacaoDTO Observacao)
         {
             var success = false;
 

@@ -2,6 +2,7 @@ using Task_in_Cloud.Infrastructure.Repository;
 using Task_in_Cloud.Application.Service;
 using Swashbuckle.AspNetCore.Filters;
 using Task_in_Cloud.Domain.Service;
+using Microsoft.OpenApi.Models;
 using Supabase;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,14 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 #region Conexão ao Banco
 var url = Environment.GetEnvironmentVariable("TASKIN_SUPABASE_URL");
 var key = Environment.GetEnvironmentVariable("TASKIN_SUPABASE_KEY");
 
-var supabase = new Supabase.Client(url, key);
+var supabase = new Client(url, key);
 await supabase.InitializeAsync();
 
 builder.Services.AddSingleton<Client>(supabase);
@@ -36,10 +35,25 @@ builder.Services.AddScoped<ObservacaoService>();
 
 #endregion
 
+builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(options =>
 {
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Task In Cloud API",
+        Version = "v1"
+    });
+
     options.ExampleFilters();
 });
+
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(
+            new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
 
 builder.Services.AddSwaggerExamplesFromAssemblyOf<Program>();
 

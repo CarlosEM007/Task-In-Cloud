@@ -56,9 +56,9 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPost("{Model}")]
+        [HttpPost]
         [SwaggerRequestExample(typeof(WorkspaceDTO), typeof(WorkspaceDtoExample))]
-        public virtual async Task<IActionResult> Post(WorkspaceDTO Workspace)
+        public virtual async Task<IActionResult> Post([FromBody] WorkspaceDTO Workspace)
         {
             var success = false;
 
@@ -80,9 +80,9 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPut("{Model}")]
+        [HttpPut]
         [SwaggerRequestExample(typeof(WorkspaceDTO), typeof(WorkspaceDtoExample))]
-        public virtual async Task<IActionResult> Put(WorkspaceDTO Workspace)
+        public virtual async Task<IActionResult> Put([FromBody] WorkspaceDTO Workspace)
         {
             var success = false;
 
