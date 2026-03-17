@@ -16,7 +16,7 @@ namespace Task_in_Cloud.API.Model.Example
             return new WorkspaceDTO
             {
                 IdWorkspace = 1,
-                Nome = "Arquitetura de sistemas",
+                Titulo = "Arquitetura de sistemas",
                 Descricao = "Tarefas focadas em arquitetura"
             };
         }

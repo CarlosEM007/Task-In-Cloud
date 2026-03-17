@@ -11,7 +11,7 @@ namespace Task_In_Cloud.Shared.Model.DTO
     {
         public int IdWorkspace { get; set; }
 
-        public string Nome { get; set; }
+        public string Titulo { get; set; }
 
         public string? Descricao { get; set; }
     }

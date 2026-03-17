@@ -49,13 +49,13 @@ namespace Task_in_Cloud.Domain.Service
             {
                 Workspace Entity = new Workspace(
                     Workspace.IdWorkspace,
-                    Workspace.Nome,
+                    Workspace.Titulo,
                     Workspace.Descricao
                 );
 
                 return await _repository.Post(Entity);
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
@@ -67,7 +67,7 @@ namespace Task_in_Cloud.Domain.Service
             {
                 Workspace Entity = new Workspace(
                     Workspace.IdWorkspace,
-                    Workspace.Nome,
+                    Workspace.Titulo,
                     Workspace.Descricao
                 );
 

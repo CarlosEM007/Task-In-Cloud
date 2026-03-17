@@ -9,7 +9,10 @@ namespace Task_in_Cloud.Infrastructure.Model
         [PrimaryKey("idworkspace")]
         public int IdWorkspace { get; set; }
 
-        [Column("Titulo")]
-        public string Nome { get; set; }
+        [Column("titulo")]
+        public string Titulo { get; set; }
+
+        [Column("descricao")]
+        public string Descricao { get; set; }
     }
 }
