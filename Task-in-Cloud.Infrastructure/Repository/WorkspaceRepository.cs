@@ -8,11 +8,14 @@ namespace Task_in_Cloud.Infrastructure.Repository
 {
     public class WorkspaceRepository: IRepository<Workspace>
     {
+        protected readonly Client _client;
+
+        public WorkspaceRepository() { }
+
         public WorkspaceRepository(Client client)
         {
+            _client = client;
         }
-
-        protected readonly Client _client;
 
         public virtual async Task<Workspace> Get(int id)
         {
