@@ -44,7 +44,7 @@ namespace Task_in_Cloud.API.Controllers
             {
                 List<TaskDTO> entity = await _service.GetAll();
 
-                if (entity == null)
+                if (entity.Count == 0)
                     return NotFound("Nenhuma tarefa encontrada!");
 
                 return Ok(entity);

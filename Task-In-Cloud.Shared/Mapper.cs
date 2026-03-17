@@ -2,7 +2,7 @@
 {
     public static class MapperUtil
     {
-        public static TDestination Map<TDestination>(object source)
+        public static TDestination? Map<TDestination>(object source)
             where TDestination : new()
         {
             var dest = new TDestination();

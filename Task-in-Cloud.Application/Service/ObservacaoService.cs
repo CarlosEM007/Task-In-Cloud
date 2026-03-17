@@ -25,6 +25,9 @@ namespace Task_in_Cloud.Application.Service
         {
             Observacao Entity = await _repository.Get(id);
 
+            if (Entity == null)
+                return null;
+
             return Mapper.Map<ObservacaoDTO>(Entity);
         }
 

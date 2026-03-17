@@ -33,6 +33,9 @@ namespace Task_in_Cloud.Infrastructure.Repository
                                                                   .Filter($"idobservacao", Supabase.Postgrest.Constants.Operator.Equals, id)
                                                                   .Get();
 
+            if (model == null)
+                return null;
+
             return Mapper.Mapper.MapperObject<Observacao>(model.Models.FirstOrDefault());
         }
 

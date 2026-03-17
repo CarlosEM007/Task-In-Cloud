@@ -23,6 +23,9 @@ namespace Task_in_Cloud.Infrastructure.Repository
                                                     .Filter($"idworkspace", Supabase.Postgrest.Constants.Operator.Equals, id)
                                                     .Get();
 
+            if (model == null)
+                return null;
+
             return Mapper.Mapper.MapperObject<Workspace>(model.Models.FirstOrDefault());
         }
 
@@ -30,6 +33,11 @@ namespace Task_in_Cloud.Infrastructure.Repository
         {
             ModeledResponse<WorkspaceModel> model = await _client.From<WorkspaceModel>()
                                                     .Get();
+
+            if (model.Models.Count == 0)
+            {
+                return new List<Workspace>();
+            }
 
             return Mapper.Mapper.MapperListObjects<Workspace>(model.Models);
         }
