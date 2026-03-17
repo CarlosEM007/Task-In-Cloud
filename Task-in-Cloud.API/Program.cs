@@ -1,7 +1,8 @@
-using Supabase;
-using Task_in_Cloud.Application.Service;
-using Task_in_Cloud.Domain.Service;
 using Task_in_Cloud.Infrastructure.Repository;
+using Task_in_Cloud.Application.Service;
+using Swashbuckle.AspNetCore.Filters;
+using Task_in_Cloud.Domain.Service;
+using Supabase;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,13 @@ builder.Services.AddScoped<ObservacaoRepository>();
 builder.Services.AddScoped<ObservacaoService>();
 
 #endregion
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.ExampleFilters();
+});
+
+builder.Services.AddSwaggerExamplesFromAssemblyOf<Program>();
 
 var app = builder.Build();
 

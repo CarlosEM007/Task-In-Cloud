@@ -9,10 +9,15 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Task-in-Cloud.Application\Task-in-Cloud.Application.csproj" />
   </ItemGroup>
+
+<PropertyGroup>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+</PropertyGroup>
 
 </Project>

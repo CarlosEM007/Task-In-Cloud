@@ -41,6 +41,11 @@ namespace Task_in_Cloud.Infrastructure.Repository
             ModeledResponse<ObservacaoModel> model = await _client.From<ObservacaoModel>()
                                                                   .Get();
 
+            if(model.Models.Count == 0)
+            {
+                return new List<Observacao>();
+            }
+
             return Mapper.Mapper.MapperListObjects<Observacao>(model.Models);
         }
 

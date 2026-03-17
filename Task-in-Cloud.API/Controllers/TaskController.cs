@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
+using Task_in_Cloud.API.Model.Example;
 using Task_in_Cloud.Application.Service;
 using Task_In_Cloud.Shared.Model.DTO;
 using Task_In_Cloud.Shared.Utils;
@@ -53,18 +55,17 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPost("{Model}")]
-        public virtual async Task<IActionResult> Post(string Model)
+        [HttpPost("{Task}")]
+        [SwaggerRequestExample(typeof(TaskDTO), typeof(TaskDtoExample))]
+        public virtual async Task<IActionResult> Post(TaskDTO Task)
         {
             var success = false;
 
             try
             {
-                TaskDTO? Entity = Json<TaskDTO>.Deserializar(Model);
-
-                if (Entity != null)
+                if (Task != null)
                 {
-                    success = await _service.Post(Entity);
+                    success = await _service.Post(Task);
                 }
 
                 if (success)
@@ -78,18 +79,17 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPut("{jsonModel}")]
-        public virtual async Task<IActionResult> Put(string Model)
+        [HttpPut("{Task}")]
+        [SwaggerRequestExample(typeof(TaskDTO), typeof(TaskDtoExample))]
+        public virtual async Task<IActionResult> Put(TaskDTO Task)
         {
             var success = false;
 
             try
             {
-                TaskDTO? Entity = Json<TaskDTO>.Deserializar(Model);
-
-                if (Entity != null)
+                if (Task != null)
                 {
-                    success = await _service.Put(Entity);
+                    success = await _service.Put(Task);
                 }
 
                 if (success)

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
+using Task_in_Cloud.API.Model.Example;
 using Task_in_Cloud.Application.Model.DTO;
 using Task_in_Cloud.Application.Service;
 using Task_In_Cloud.Shared;
@@ -42,7 +44,7 @@ namespace Task_in_Cloud.API.Controllers
             {
                 List<ObservacaoDTO> entity = await _service.GetAll();
 
-                if (entity == null)
+                if (entity.Count == 0)
                     return NotFound("Nenhuma tarefa encontrada!");
 
                 return Ok(entity);
@@ -53,18 +55,17 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPost("{Model}")]
-        public virtual async Task<IActionResult> Post(string Model)
+        [HttpPost("{Observacao}")]
+        [SwaggerRequestExample(typeof(ObservacaoDTO), typeof(ObservacaoDtoExample))]
+        public virtual async Task<IActionResult> Post(ObservacaoDTO Observacao)
         {
             var success = false;
 
             try
             {
-                ObservacaoDTO? Entity = Json<ObservacaoDTO>.Deserializar(Model);
-
-                if (Entity != null)
+                if (Observacao != null)
                 {
-                    success = await _service.Post(Entity);
+                    success = await _service.Post(Observacao);
                 }
 
                 if (success)
@@ -78,18 +79,17 @@ namespace Task_in_Cloud.API.Controllers
             }
         }
 
-        [HttpPut("{jsonModel}")]
-        public virtual async Task<IActionResult> Put(string jsonModel)
+        [HttpPut("{Observacao}")]
+        [SwaggerRequestExample(typeof(ObservacaoDTO), typeof(ObservacaoDtoExample))]
+        public virtual async Task<IActionResult> Put(ObservacaoDTO Observacao)
         {
             var success = false;
 
             try
             {
-                ObservacaoDTO? Entity = Json<ObservacaoDTO>.Deserializar(jsonModel);
-
-                if (Entity != null)
+                if (Observacao != null)
                 {
-                    success = await _service.Put(Entity);
+                    success = await _service.Put(Observacao);
                 }
 
                 if (success)

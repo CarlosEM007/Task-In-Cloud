@@ -1,7 +1,8 @@
-﻿using Task_in_Cloud.Infrastructure.Repository;
-using Task_in_Cloud.Domain.Model.Interface;
+﻿using System.Reflection;
 using Task_in_Cloud.Application.Model.DTO;
 using Task_in_Cloud.Domain.Model.Entity;
+using Task_in_Cloud.Domain.Model.Interface;
+using Task_in_Cloud.Infrastructure.Repository;
 using Task_In_Cloud.Shared.Utils;
 
 namespace Task_in_Cloud.Application.Service
@@ -30,6 +31,11 @@ namespace Task_in_Cloud.Application.Service
         public virtual async Task<List<ObservacaoDTO>> GetAll()
         {
             List<Observacao> Entitys = await _repository.GetAll();
+
+            if (Entitys.Count == 0)
+            {
+                return new List<ObservacaoDTO>();
+            }
 
             return Mapper.Map<List<ObservacaoDTO>>(Entitys);
         }
