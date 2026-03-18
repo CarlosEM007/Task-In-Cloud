@@ -2,8 +2,8 @@
 using Task_in_Cloud.Domain.Model.Entity;
 using Task_in_Cloud.Domain.Model.Interface;
 using Task_in_Cloud.Infrastructure.Repository;
+using Task_In_Cloud.Shared;
 using Task_In_Cloud.Shared.Model.DTO;
-using Task_In_Cloud.Shared.Utils;
 
 namespace Task_in_Cloud.Domain.Service
 {
@@ -28,7 +28,7 @@ namespace Task_in_Cloud.Domain.Service
             if (Entity == null)
                 return null;
 
-            return Mapper.Map<WorkspaceDTO>(Entity);
+            return MapperUtil.Map<Workspace, WorkspaceDTO>(Entity);
         }
 
         public virtual async Task<List<WorkspaceDTO>> GetAll()
@@ -40,7 +40,7 @@ namespace Task_in_Cloud.Domain.Service
                 return new List<WorkspaceDTO>();
             }
 
-            return Mapper.Map<List<WorkspaceDTO>>(Entitys);
+            return MapperUtil.MapList<Workspace, WorkspaceDTO>(Entitys);
         }
 
         public virtual async Task<bool> Post(WorkspaceDTO Workspace)

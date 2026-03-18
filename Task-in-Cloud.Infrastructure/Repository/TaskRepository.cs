@@ -1,7 +1,10 @@
 ﻿using Supabase;
 using Supabase.Postgrest.Responses;
+using System.Reflection;
 using Task_in_Cloud.Domain.Interface;
+using Task_in_Cloud.Domain.Model.Entity;
 using Task_in_Cloud.Infrastructure.Model;
+using Task_In_Cloud.Shared;
 using Task = Task_in_Cloud.Domain.Model.Entity.Task;
 
 namespace Task_in_Cloud.Infrastructure.Repository
@@ -26,7 +29,7 @@ namespace Task_in_Cloud.Infrastructure.Repository
             if (model == null)
                 return null;
 
-            return Mapper.Mapper.MapperObject<Task>(model.Models.FirstOrDefault());
+            return MapperUtil.Map<TaskModel, Task>(model.Models.FirstOrDefault());
         }
 
         public virtual async Task<List<Task>> GetAll()
@@ -39,12 +42,12 @@ namespace Task_in_Cloud.Infrastructure.Repository
                 return new List<Task>();
             }
 
-            return Mapper.Mapper.MapperListObjects<Task>(model.Models);
+            return MapperUtil.MapList<TaskModel, Task>(model.Models);
         }
 
         public virtual async Task<bool> Post(Task Entity)
         {
-            TaskModel Task = Mapper.Mapper.MapperObject<TaskModel>(Entity);
+            TaskModel Task = MapperUtil.Map<Task, TaskModel>(Entity);
 
             await _client.From<TaskModel>().Insert(Task);
             return true;
@@ -52,7 +55,7 @@ namespace Task_in_Cloud.Infrastructure.Repository
 
         public virtual async Task<bool> Put(Task Entity)
         {
-            TaskModel Task = Mapper.Mapper.MapperObject<TaskModel>(Entity);
+            TaskModel Task = MapperUtil.Map<Task, TaskModel>(Entity);
 
             await _client.From<TaskModel>().Update(Task);
             return true;

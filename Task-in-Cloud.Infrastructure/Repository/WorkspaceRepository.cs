@@ -1,8 +1,10 @@
 ﻿using Supabase;
 using Supabase.Postgrest.Responses;
+using System.Reflection;
 using Task_in_Cloud.Domain.Interface;
 using Task_in_Cloud.Domain.Model.Entity;
 using Task_in_Cloud.Infrastructure.Model;
+using Task_In_Cloud.Shared;
 
 namespace Task_in_Cloud.Infrastructure.Repository
 {
@@ -26,7 +28,7 @@ namespace Task_in_Cloud.Infrastructure.Repository
             if (model == null)
                 return null;
 
-            return Mapper.Mapper.MapperObject<Workspace>(model.Models.FirstOrDefault());
+            return MapperUtil.Map<WorkspaceModel, Workspace>(model.Models.FirstOrDefault());
         }
 
         public virtual async Task<List<Workspace>> GetAll()
@@ -39,12 +41,12 @@ namespace Task_in_Cloud.Infrastructure.Repository
                 return new List<Workspace>();
             }
 
-            return Mapper.Mapper.MapperListObjects<Workspace>(model.Models);
+            return MapperUtil.MapList<WorkspaceModel, Workspace>(model.Models);
         }
 
         public virtual async Task<bool> Post(Workspace Entity)
         {
-            WorkspaceModel Workspace = Mapper.Mapper.MapperObject<WorkspaceModel>(Entity);
+            WorkspaceModel Workspace = MapperUtil.Map<Workspace, WorkspaceModel>(Entity);
 
             await _client.From<WorkspaceModel>().Insert(Workspace);
             return true;
@@ -52,7 +54,7 @@ namespace Task_in_Cloud.Infrastructure.Repository
 
         public virtual async Task<bool> Put(Workspace Entity)
         {
-            WorkspaceModel Workspace = Mapper.Mapper.MapperObject<WorkspaceModel>(Entity);
+            WorkspaceModel Workspace = MapperUtil.Map<Workspace, WorkspaceModel>(Entity);
 
             await _client.From<WorkspaceModel>().Update(Workspace);
             return true;

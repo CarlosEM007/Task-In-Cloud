@@ -1,5 +1,6 @@
 ﻿using Supabase;
 using Supabase.Postgrest.Responses;
+using System.Reflection;
 using Task_in_Cloud.Domain.Interface;
 using Task_in_Cloud.Domain.Model.Entity;
 using Task_in_Cloud.Infrastructure.Model;
@@ -36,7 +37,8 @@ namespace Task_in_Cloud.Infrastructure.Repository
             if (model == null)
                 return null;
 
-            return Mapper.Mapper.MapperObject<Observacao>(model.Models.FirstOrDefault());
+            return MapperUtil.Map<ObservacaoModel, Observacao>(model.Models.FirstOrDefault());
+            
         }
 
         public async Task<List<Observacao>> GetAll()
@@ -49,12 +51,12 @@ namespace Task_in_Cloud.Infrastructure.Repository
                 return new List<Observacao>();
             }
 
-            return Mapper.Mapper.MapperListObjects<Observacao>(model.Models);
+            return MapperUtil.MapList<ObservacaoModel, Observacao>(model.Models);
         }
 
         public async Task<bool> Post(Observacao Entity)
         {
-            ObservacaoModel Observacao = Mapper.Mapper.MapperObject<ObservacaoModel>(Entity);
+            ObservacaoModel Observacao = MapperUtil.Map<Observacao, ObservacaoModel>(Entity);
 
             await _client.From<ObservacaoModel>().Insert(Observacao);
             return true;
@@ -62,7 +64,7 @@ namespace Task_in_Cloud.Infrastructure.Repository
 
         public async Task<bool> Put(Observacao Entity)
         {
-            ObservacaoModel Observacao = Mapper.Mapper.MapperObject<ObservacaoModel>(Entity);
+            ObservacaoModel Observacao = MapperUtil.Map<Observacao, ObservacaoModel>(Entity);
 
             await _client.From<ObservacaoModel>().Update(Observacao);
             return true;

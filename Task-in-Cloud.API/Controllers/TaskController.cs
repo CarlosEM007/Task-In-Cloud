@@ -3,7 +3,6 @@ using Swashbuckle.AspNetCore.Filters;
 using Task_in_Cloud.API.Model.Example;
 using Task_in_Cloud.Application.Service;
 using Task_In_Cloud.Shared.Model.DTO;
-using Task_In_Cloud.Shared.Utils;
 using Task = Task_in_Cloud.Domain.Model.Entity.Task;
 
 namespace Task_in_Cloud.API.Controllers
